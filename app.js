@@ -1,4 +1,6 @@
 import 'dotenv/config.js'
+import './config/database.js'
+import cors from 'cors'
 import createError from 'http-errors'; // Módulo para crear errores HTTP
 import express from 'express'; // Marco de trabajo para crear aplicaciones web
 import cookieParser from 'cookie-parser'; // Módulo para analizar cookies de las solicitudes
@@ -10,10 +12,12 @@ import productsRouter from './routes/products.js';
 import { __dirname } from './utils/util.js';
 // Crear una instancia de la aplicación Express
 const app = express();
-// Configuración del motor de vistas (Pug) y middleware
+/* el método .set se utiliza para establecer configuraciones y opciones en la aplicación o en el objeto de la aplicación. Permite ajustar varios aspectos del comportamiento de Express y cómo maneja las solicitudes y respuestas. Se puede usar para configurar propiedades globales de la aplicación o para modificar comportamientos específicos. */
+/////// Configuración del motor de vistas (Pug) y middleware
 app.set('views', path.join(__dirname, 'views')); // Ruta a la carpeta de vistas
 app.set('view engine', 'pug'); // Motor de vistas a utilizar: Pug
-
+/* el método .use se utiliza para agregar middleware a la cadena de manejo de solicitudes. El middleware es una función que se ejecuta en el proceso de manejo de una solicitud HTTP antes de que llegue a su manejador final. Esto permite realizar tareas como la autenticación, validación de datos, manipulación de encabezados, entre otras, antes de que la solicitud llegue a la ruta o función de manejo principal. */
+app.use(cors())
 app.use(logger('dev')); // Configurar el registro de solicitudes en modo "dev"
 app.use(express.json()); // Analizar solicitudes JSON
 app.use(express.urlencoded({ extended: false })); // Analizar solicitudes de formularios
