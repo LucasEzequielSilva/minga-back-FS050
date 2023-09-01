@@ -1,18 +1,13 @@
 // Importamos el módulo Express
 import express from 'express';
+import usersRouter from './users.js'; // Enrutador para las rutas de usuarios
+import productsRouter from './products.js';
 
 // Creamos un nuevo objeto router
 const router = express.Router();
 
-// Define una ruta GET para la raíz del sitio web
-router.get('/pepito', (req, res, next) => {
-  // Envia una respuesta con el texto "Welcome gente"
-  res.send("Welcome gente");
-});
-router.get('/fulanito', (req, res, next) => {
-  // Envia una respuesta con el texto "Welcome gente"
-  res.send("otra ruta");
-});
+router.use('/users', usersRouter); // Usar el enrutador para rutas de usuarios
+router.use('/products', productsRouter)
 // Exportamos el objeto router
 export default router;
 

@@ -6,10 +6,13 @@ const router = express.Router();
 
 // Define una ruta GET para la raíz del sitio web
 /* para traer todos los productos */
+
 router.get('/', (req, res, next) => {
   // Envia una respuesta con el texto "Welcome gente"
-  res.json({mangas:"todos los mangas"});
+  res.json({productos:"todos los productos"});
 });
+
+
 
 /* 
     línea 1: Importamos el módulo Express. Este módulo proporciona las funciones y clases necesarias para crear aplicaciones web con Node.js.
