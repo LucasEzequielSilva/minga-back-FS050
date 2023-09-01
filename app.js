@@ -7,8 +7,6 @@ import cookieParser from 'cookie-parser'; // Módulo para analizar cookies de la
 import logger from 'morgan'; // Módulo para el registro (logging) de solicitudes y respuestas
 import path from 'path'; // Módulo para trabajar con rutas de archivos y directorios
 import indexRouter from './routes/index.js'; // Enrutador para la página principal
-import usersRouter from './routes/users.js'; // Enrutador para las rutas de usuarios
-import productsRouter from './routes/products.js'; 
 import { __dirname } from './utils/util.js';
 // Crear una instancia de la aplicación Express
 const app = express();
@@ -26,8 +24,8 @@ app.use(express.static(path.join(__dirname, 'public'))); // Servir archivos est�
 
 // Configurar enrutadores para rutas específicas
 app.use('/', indexRouter); // Usar el enrutador para la página principal
-app.use('/users', usersRouter); // Usar el enrutador para rutas de usuarios
-app.use('/products', productsRouter)
+
+
 // Capturar solicitudes no manejadas y generar un error 404
 app.use((req, res, next) => {
   next(createError(404));
