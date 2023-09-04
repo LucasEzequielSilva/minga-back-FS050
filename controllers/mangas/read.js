@@ -11,10 +11,10 @@ async function read(req, res, next){
     if(req.query.title) queries.title = new RegExp(req.query.title,'i')
     if(req.query.category) queries.category_id = req.query.category.split(",")
     let count = await Manga.estimatedDocumentCount()
-    let mangas = await Manga.find(queries).populate("category_id").sort({title:order})
+    let mangas = await Manga.find(queries).populate("category_id", "name -_id").populate("author_id", "name -_id").sort({title:order})
     .skip( pagination.page > 0 ? (pagination.page-1)*4 : 0 ) /* RECORTA */
     .limit( pagination.limit > 0 ? pagination.limit : 0 ) /* LIMITA */
     
-    return res.status(200).json({mangas})
+    return res.status(200).json({mangas, count})
 }
 export default read

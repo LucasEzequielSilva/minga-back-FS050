@@ -1,10 +1,12 @@
 import { Schema,Types,model } from "mongoose"
-
+import Category from './Category.js'
+import Author from './Author.js'
 let collection = 'mangas'
 let schema = new Schema({
     author_id: {
         type: Types.ObjectId,
-        required: true
+        required: true,
+        ref:Author
     },
     company_id: {
         type: Types.ObjectId,
@@ -14,7 +16,8 @@ let schema = new Schema({
     description: { type:String,required:true },
     category_id: {
         type: Types.ObjectId,
-        required: true
+        required: true,
+        ref:'categories'
     }
 },{
     timestamps: true

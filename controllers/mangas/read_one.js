@@ -13,7 +13,7 @@ async function getOne(req, res, next) {
     try {        
         console.log(req.params)
         console.log(req.params.id)
-        let one = await Manga.findOne({_id:req.params.id})
+        let one = await Manga.findOne({_id:req.params.id}).populate("category_id", "name -_id")
         if(!one){
             return res.status(404).json({ message: 'Not Found' })
         }
