@@ -7,6 +7,8 @@ async function getUsers(req, res, next) {
         res.json({
             response: allUsers
         });
+
+        console.log('hice una peticion')
     } catch (error) {
 
     }
