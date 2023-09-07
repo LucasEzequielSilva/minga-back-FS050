@@ -13,6 +13,12 @@ const findCategory = async (req, res, next) => {
             message: "Categoria no encontrada",
             response: null
         })
+
+        
+        // req.body.category_id
+        // req.body.category_id
+        // req.body.category_id
+        // req.body.category_id
         // req.body.category_id
     } catch (error) {
         return res.status(500).json({
