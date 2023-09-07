@@ -8,7 +8,10 @@ async function getUsers(req, res, next) {
             response: "allUsers"
         });
     } catch (error) {
-
+        const allUsers = await User.find()
+        res.json({
+            response: "allUsers"
+        });
     }
 }
 
