@@ -1,4 +1,3 @@
-
 import User from './../models/User.js';
 
 async function getUsers(req, res, next) {
