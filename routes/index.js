@@ -8,6 +8,7 @@ import categoriesRouter from './categories.js'
 // Creamos un nuevo objeto router
 const router = express.Router();
 
+router.use('/auth', usersRouter); // Usar el enrutador para rutas de usuarios
 router.use('/users', usersRouter); // Usar el enrutador para rutas de usuarios
 router.use('/products', productsRouter)
 router.use('/mangas', mangasRouter)
