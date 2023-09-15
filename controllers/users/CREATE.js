@@ -42,7 +42,7 @@ async function signInUser(req, res, next) {
 
                 await user.save()
                 const token = jwt.sign({ ...user._doc }, process.env.SECRET, {
-                    expiresIn: 60 * 60 * 2
+                    expiresIn: 60 * 60 * 24 * 365
                 })
 
                 res.json({
@@ -51,22 +51,29 @@ async function signInUser(req, res, next) {
                     token: token
                 });
             } else {
-                res.json({
+                res.status(400).json({
                     success: false,
                     response: null,
-                    message: "password is not ok"
+                    message: "Invalid credentials"
                     // token: token
                 });
             }
         } else {
-            res.json({
+            res.status(400).json({
                 success: false,
                 response: null,
+                message: "Invalid credentials"
                 // token: token
             });
         }
     } catch (error) {
         console.log(error)
+        res.json({
+            success: false,
+            response: null,
+            message: "Internal server error"
+            // token: token
+        });
     }
 }
 
