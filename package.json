@@ -27,5 +27,10 @@
     "passport": "^0.6.0",
     "passport-jwt": "^4.0.1",
     "pug": "2.0.0-beta11"
+  },
+  "devDependencies": {
+    "chai": "^4.3.8",
+    "mocha": "^10.2.0",
+    "supertest": "^6.3.3"
   }
 }
